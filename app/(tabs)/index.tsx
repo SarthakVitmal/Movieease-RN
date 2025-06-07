@@ -11,7 +11,8 @@ import MovieCard from "@/components/MovieCard";
 export default function HomeScreen() {
     const router = useRouter();
 
-    const {data: movies, loading: moviesLoading, error: moviesError} = useFetch(() => fetchMovies({query: ''}));
+    const {data: movies, loading: moviesLoading, error: moviesError} =
+        useFetch(() => fetchMovies({query: ''}));
 
     // @ts-ignore
     return (
