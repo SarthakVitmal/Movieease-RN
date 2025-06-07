@@ -9,6 +9,7 @@ import SearchBar from '@/components/SearchBar'
 import {useState, useEffect } from 'react';
 import SearchImg from '@/assets/images/Search.svg'
 import NotFoundImg from '@/assets/images/Not-Found.svg'
+import {updateSearchCount} from "@/services/appwrite";
 
 
 export default function Search(){
@@ -25,6 +26,10 @@ export default function Search(){
     },500);
         return () => {clearTimeout(timoutId);};
     },[searchQuery])
+
+    useEffect(() => {
+        if(movies?.length > 0 && movies?.[0]) updateSearchCount(searchQuery,movies[0]);
+    },[movies])
 
     return(
         <View className={"flex-1 bg-primary"}>
